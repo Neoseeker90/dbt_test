@@ -7,7 +7,7 @@ version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'personal'
+profile: 'default'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -21,8 +21,8 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
-  - "target"
-  - "dbt_modules"
+    - "target"
+    - "dbt_modules"
 
 
 # Configuring models
@@ -33,7 +33,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   dbt_test:
-    # Config indicated by + and applies to all files under models/example/
-    staging:
-      +materialized: view
-      +schema: dbt_staging
+      # Applies to all files under models/example/
+      example:
+          materialized: view
